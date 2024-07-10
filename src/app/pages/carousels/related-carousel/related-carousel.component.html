@@ -1,0 +1,109 @@
+<div class="row justify-content-end">
+    <div class="col-12">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-6">
+                <h3 class="sm-cat-text4">Related Ads</h3>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-6">
+                        <button class="carouselButton">
+                            <img (click)="prevImage()" src="assets/images/left-sided-arrow.png" class="w-100"
+                                aria-hidden="true" alt="">
+                        </button>
+                    </div>
+                    <div class="col-6 ">
+                        <button class="carouselButton">
+                            <img (click)="nextImage()" src="assets/images/right-sided-arrow.png" class="w-100"
+                                aria-hidden="true" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- mobile view  -->
+<div class="carousel-container mb-5 d-block d-md-none">
+    <div class="carousel">
+        <div class="carousel-cell">
+            <div class="row mt-5 justify-content-between">
+                <div class="col-6" *ngFor="let item of getVisibleItems(); trackBy: trackById">
+                    <div class="card mb-2 w-100" style="border-radius: 10px !important;">
+                        <div class="m-1 card border-0">
+                            <img style="height: 20vh;" [src]="'assets/catImage/' + item.imageName">
+                        </div>
+                        <b style="text-align: left;" class="sm-font pl-1">{{item.price}}</b>
+                        <span class="ellipsis sm-cat-text pl-1" style="text-align: left; font-size: 15px;">{{item.title}}</span>
+                        <div class="p-1 d-flex justify-content-between" style="font-size: 12px;">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/date.svg" class="w-25" alt=""><span class="sm-cat-text"
+                                    style="margin-left: 5px;">{{item.year}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/km.svg" class="w-25" alt=""><span class="sm-cat-text"
+                                    style="margin-left: 5px;">{{item.km}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/petrol.svg" class="w-25" alt=""><span class="sm-cat-text"
+                                    style="margin-left: 5px;">{{item.petrol}}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <img src="assets/images/location.svg" style="width: 8%" alt=""><span class="sm-cat-text"
+                                style="font-size: 10px;margin-left: 5px;">{{item.location}}</span>
+                        </div>
+                        <button type="submit" class="bidButton p-2 m-2 sm-font">Bid Know</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <button class="left" (click)="prevImage()">&#9664;</button>
+    <button class="right" (click)="nextImage()">&#9654;</button> -->
+</div>
+<!-- desktop view  -->
+<div class="carousel-container mb-5 d-none d-md-block">
+    <div class="">
+        <div class="">
+            <div class="row mt-5">
+                <div class="col-3" *ngFor="let item of getVisibleItems(); trackBy: trackById">
+                    <div class="card mb-2 p-2 w-100" style="border-radius: 20px !important;">
+                        <div class="m-2 card border-0">
+                            <img style="height: 25vh; border-radius: 2vh;" [src]="item.photo[0].src">
+                        </div>
+                        <b style="text-align: left;">{{item.price}}</b>
+                        <span class="ellipsis" style="text-align: left; font-size: 15px;">{{item.title}}</span>
+                        <div class="p-2 d-flex justify-content-between" style="font-size: 12px;">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/date.svg" class="" alt=""><span
+                                    style="margin-left: 5px;">{{item.year}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/km.svg" class="" alt=""><span
+                                    style="margin-left: 5px;">{{item.km}}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/petrol.svg" class="" alt=""><span
+                                    style="margin-left: 5px;">{{item.petrol}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="d-flex">
+                                    <img src="assets/images/location.svg" style="width: 8%" alt=""><span
+                                        style="font-size: 10px;margin-left: 5px;">{{item.location}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="bidButton p-2 m-2">Bid Know</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <button class="left" (click)="prevImage()">&#9664;</button>
+    <button class="right" (click)="nextImage()">&#9654;</button> -->
+</div>
+<hr>

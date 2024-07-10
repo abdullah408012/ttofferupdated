@@ -1,0 +1,115 @@
+<app-header></app-header>
+@if(this.productType=='a'){
+    <div class="text-center pt-3 m-2">
+    <div class="p-2" style="text-align: right; cursor:pointer">
+        <!-- <span><a  href="/productView">View All</a></span> -->
+    </div>
+    <h2>Auction Product</h2>
+        <!-- <button class="btn btn-primary" (click)="toggleView()">{{showAll ? 'Show Less' : 'View All'}}</button> -->
+    <h6>Hurry up! The auction is ending soon</h6>
+    <div class="card-body">
+        <div class="row p-5">
+                @for (item of auctionProduct; track item.id) {
+                    <div class="col-md-3">
+                        <div class="card mb-2 p-2" style="width: 250px;">
+                            <div class="m-2 card">
+                                <img src="\assets\catImage\{{item.imageName}}">
+                            </div>
+                            <b style="text-align: left;">{{item.price}}</b>
+                            <span class="ellipsis" style="text-align: left; font-size: 15px;">{{item.title}}</span>
+                            <div class="row p-2" style="font-size: 12px;">
+                                <div style="padding: 0px 15px 0px 15px;">{{item.year}}</div>
+                                <div style="padding: 0px 15px 0px 15px;">{{item.km}}</div>
+                                <div style="padding: 0px 15px 0px 15px;">{{item.petrol}}</div>
+                            </div>
+                            <span class="ellipsis" style="text-align: left; font-size: 12px;">{{item.location}}</span>
+                            <!-- <h6>{{item.fix_price}}</h6> -->
+                            <!-- <h5>{{item.category.name}}</h5> -->
+                            <button type="submit" class="bidButton p-2 m-2">Bid Know</button>
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+    </div>
+}
+@if (this.productType == 'f') {
+    <div class="text-center pt-3 m-2">
+        <div class="p-2" style="text-align: right; cursor:pointer">
+            <!-- <span><a  href="/productView">View All</a></span> -->
+        </div>
+        <h2>Feature Product</h2>
+        <h6>Act fast! These featured products won't last long</h6>
+        <div class="card-body">
+            <div class="row p-5">
+                    @for (item of featuredProducts; track item.id) {
+                        <div class="col-md-3">
+                            <div class="card mb-2 p-2" style="width: 250px;">
+                                <div class="m-2 card">
+                                    <img src="\assets\catImage\{{item.imageName}}">
+                                </div>
+                                <b style="text-align: left;">{{item.price}}</b>
+                                <span class="ellipsis" style="text-align: left; font-size: 15px;">{{item.title}}</span>
+                                <div class="row p-2" style="font-size: 12px;">
+                                    <div style="padding: 0px 15px 0px 15px;">{{item.year}}</div>
+                                    <div style="padding: 0px 15px 0px 15px;">{{item.km}}</div>
+                                    <div style="padding: 0px 15px 0px 15px;">{{item.petrol}}</div>
+                                </div>
+                                <span class="ellipsis" style="text-align: left; font-size: 12px;">{{item.location}}</span>
+                                <!-- <h6>{{item.fix_price}}</h6> -->
+                                <!-- <h5>{{item.category.name}}</h5> -->
+                                <button type="submit" class="bidButton p-2 m-2">Bid Know</button>
+                            </div>
+                        </div>
+                }
+            </div>
+        </div>
+        </div>
+}
+<!-- <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened>
+      <h3>Sub Categories</h3>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="mobile-phones">Mobile Phones</mat-radio-button>
+        <mat-radio-button value="accessories">Accessories</mat-radio-button>
+        <mat-radio-button value="verified-seller">Verified Seller</mat-radio-button>
+        <mat-radio-button value="smart-watches">Smart Watches</mat-radio-button>
+        <mat-radio-button value="tablets">Tablets</mat-radio-button>
+        <mat-radio-button value="view-all">View all</mat-radio-button>
+      </mat-radio-group>
+  
+      <h3>Seller Type</h3>
+      <mat-checkbox>Verified Seller</mat-checkbox>
+      <mat-checkbox>Urgents</mat-checkbox>
+  
+      <h3>Conditions</h3>
+      <mat-radio-group aria-label="Select condition">
+        <mat-radio-button value="any">Any</mat-radio-button>
+        <mat-radio-button value="new">New</mat-radio-button>
+        <mat-radio-button value="used">Used</mat-radio-button>
+      </mat-radio-group>
+  
+      <h3>Top Location</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>City, state & country name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-checkbox>Minnesota, USA</mat-checkbox>
+      <mat-checkbox>Wisconsin, USA</mat-checkbox>
+      <mat-checkbox>Michigan, USA</mat-checkbox>
+      <mat-checkbox>New York, USA</mat-checkbox>
+      <mat-checkbox>New Mexico, USA</mat-checkbox>
+      <mat-checkbox>Washington, USA</mat-checkbox>
+      <mat-checkbox>Brasilia, Brazil</mat-checkbox>
+  
+      <h3>Location Radius</h3>
+      <mat-slider min="0" max="100" step="1" value="32"></mat-slider>
+  
+      <h3>Prices</h3>
+      <mat-slider min="150" max="670" step="1" value="150" thumbLabel tickInterval="100"></mat-slider>
+    </mat-sidenav>
+    <mat-sidenav-content>
+    </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+

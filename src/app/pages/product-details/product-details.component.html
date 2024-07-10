@@ -1,0 +1,183 @@
+<div class="container-fluid">
+  <app-header></app-header>
+  <div class="row mt-5">
+    <div class="col-10 mx-auto">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>{{featuredProducts[0].title}}</h2>
+          <div class="d-flex align-items-center">
+            <p><img src="assets/images/map-pin.png">{{featuredProducts[0].location}}</p>
+            <p class="mx-2"><img src="assets/images/clock.png"> {{featuredProducts[0].updated_at | date}} </p>
+            <p><img src="assets/images/eye.png"> {{featuredProducts[0].views_count}} Viewed</p>
+          </div>
+          <div class="col-12">
+            <app-product-carousel [photo]="featuredProducts[0].photo"
+              [video]="featuredProducts[0].video"></app-product-carousel>
+          </div>
+        </div>
+        <div class="d-block d-md-none">
+          <div class="row">
+            <div class="col-md-8">
+              <h2 class="sm-cat-text4">Descriptions</h2>
+              <p class="sm-font" style="word-wrap: break-word;">{{featuredProducts[0].description}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3>${{featuredProducts[0].auction_price}}</h3>
+            <div>
+              <img *ngIf="!featuredProducts[0].wishlist.length" src="assets/images/action.png" alt="Add to Wishlist"
+                (click)="addWishLst(featuredProducts[0])">
+              <img *ngIf="featuredProducts[0].wishlist.length > 0" src="assets/images/action_filled.png"
+                alt="Added to Wishlist" (click)="removeWishLst(featuredProducts[0])">
+            </div>
+          </div>
+          <hr>
+
+          <a href="/chatBox">
+            <button class="btn btn-dark w-100 mt-3" style="border-radius: 20px; padding: 10px;">Send Message</button>
+          </a>
+          <button (click)="openModal()" class="btn w-100 mt-3 mb-3"
+            style="border-radius: 20px; padding: 10px; background-color: #EBEEF7;">Make
+            Offer</button>
+          <hr>
+          <div class="row align-items-center mt-4">
+            <div class="col-8">
+              <div class="row align-items-center">
+                <div class="col-4">
+                  <img [src]="featuredProducts[0].user.img" class="userImage" alt="">
+                  <!-- <img src="assets/images/profile-img.png" class="w-100" alt=""> -->
+                </div>
+                <div class="col-8">
+                  <span style="color: #767E94;">Add by:</span>
+                  <div class="d-flex align-items-center">
+                    <h6 class="m-0 sm-font" style="font-size: 2vh;">{{featuredProducts[0].user.name}} </h6><img
+                      style="height: 3vh;" src="assets/images/check-circle.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <a href="/auctionUserProfile/{{featuredProducts[0].user.id}}">
+                <h6 class="pointer textHover sm-cat-text3" style="text-decoration: none; color: #636A80;">View Profile
+                </h6>
+              </a>
+            </div>
+            <div class="col-12 mt-4">
+              <h6 style="color: #636A80;" class="sm-cat-text3"><img src="assets/images/MapPinLine.png"
+                  style="margin-right: 10px;">{{featuredProducts[0].user.location}}</h6>
+            </div>
+          </div>
+          <hr>
+          <div class="row mt-4">
+            <div class="col-6">
+              <div class="d-flex ">
+                <h6 class="sm-cat-text4" style="color: #878787; margin-right: 5px;">Condition:</h6>
+                <h6 class="sm-font1">{{parsedAttributes.condition}}</h6>
+              </div>
+              <div class="d-flex mt-3 ">
+                <h6 class="sm-cat-text4" style="color: #878787; margin-right: 5px;">Model:</h6>
+                <h6 class="sm-font1">{{parsedAttributes.model}}</h6>
+              </div>
+              <div class="d-flex mt-3 ">
+                <h6 class="sm-cat-text4" style="color: #878787; margin-right: 5px;">Authenticity:</h6>
+                <h6 class="sm-font1">{{attributesObject.authenticity}}</h6>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-flex ">
+                <h6 class="sm-cat-text4" style="color: #878787; margin-right: 5px;">Brand:</h6>
+                <h6 class="sm-font1">{{attributesObject.brand}}</h6>
+              </div>
+              <div class="d-flex mt-3">
+                <h6 class="sm-cat-text4" style="color: #878787; margin-right: 5px;">Edition:</h6>
+                <h6 class="sm-cat-text4">2/32</h6>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 mt-4">
+              <h4 class="sm-cat-text4">Location</h4>
+              <div>
+                <google-map style="border-radius: 5px;" height="200px" width="100%" [center]="center" [zoom]="zoom">
+                </google-map>
+              </div>
+              <!-- <img src="assets/images/map.png" class="w-100 mt-3" alt=""> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-none d-md-block">
+        <div class="row">
+          <div class="col-8">
+            <h2>Descriptions</h2>
+            <p style="word-wrap: break-word;">{{featuredProducts[0].description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mt-5">
+          <app-related-carousel [productList]="featuredProductsTemp"></app-related-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+
+
+<div class="modal fade" id="offerModal" tabindex="-1" role="dialog" aria-labelledby="offerModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="border-radius: 20px;">
+      <div class="modal-header border-0">
+        <!-- <button type="button" class="back" (click)="back()" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button> -->
+        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body mb-5">
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <div class="text-center">
+              <h5 class="">Make Offer</h5>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-4">
+                <img src="assets/images/light-clothes-img.svg" class="w-100" alt="">
+              </div>
+              <div class="col-8">
+                <h6>{{featuredProducts[0].title}}</h6>
+                <div class="row align-items-center justify-content-end">
+                  <div class="col-5">
+                    <img src="assets/images/stars.png" class="w-100" alt="">
+                  </div>
+                  <div class="col-4">
+                    <h6 class="m-0">5.0</h6>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-6 mx-auto text-center mt-3">
+                <h6>Enter Your Offer</h6>
+                <input [(ngModel)]="offerPrice"
+                  style="border-radius: 10px; border: 1px solid black; padding: 5px; text-align: center;" type="text"
+                  class="form-control" placeholder="$">
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button class="btn btn-dark w-100" style="border-radius: 20px; padding: 10px;" (click)="makeOffer()">Send
+                Offer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

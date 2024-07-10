@@ -1,0 +1,62 @@
+.btn:hover{
+    background-color: transparent !important;
+    color: #000000;
+}
+
+.active {
+    background-color: #E5FFF8;
+  }
+  .suggestions-container {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: -15vh;
+    z-index: 10;
+    padding: 10px;
+  }
+  
+  .suggestion-box {
+    padding: 10px 15px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .suggestion-box:hover {
+    background-color: #f0f0f0;
+  }
+  .userImage{
+    width: 80px !important;
+    height: 80px;
+  }
+  .right {
+    text-align: right;
+    background-color: #e1ffc7;
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 15px 15px 0 15px;
+  }
+  
+  .left {
+    text-align: left;
+    background-color: #ffffff;
+    margin-left: 0;
+    margin-right: auto;
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 15px 15px 15px 0;
+  }
+  
+  // div {
+  //   display: flex;
+  //   padding: 5px;
+  // }
+  
+  // p {
+  //   margin: 0;
+  // }

@@ -1,0 +1,161 @@
+<div class="container-fluid">
+    <app-header></app-header>
+    <div class="row">
+        <div class="col-11 mx-auto text-center mt-5">
+            <h1 class="sm-text">All Categories</h1>
+            <div class="row mt-5">
+                <div class="col-md-1 col-2 mt-3" style="margin: 0 1.2vw;"
+                    *ngFor="let item of firstRowItems; let last = last">
+                    <a class="aHover pointer" style="text-decoration: none; color: #1E293B;" href="/catagories/{{item.id}}">
+                        <img class="w-100" [src]="item.imgSrc"> 
+                        <h6 class=" mt-2 sm-cat-text" style="font-size: 1.8vh;">{{ item.title }}</h6>
+                        <h6 class="sm-cat-text2" *ngIf="last"
+                            style="font-size: 1.6vh; background-color: #FFD33C; border-radius: 5px; padding: 5px;">
+                            {{ item.subTitle }}
+                        </h6>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="text-center mt-5">
+        <h1 class="sm-cat-text4">Auction Product</h1>
+        <h6 class="sm-cat-text3">Hurry up! The auction is ending soon</h6>
+        <div class="row">
+            <div class="col-11 mx-auto mt-3">
+                <div style="text-align: right; cursor:pointer">
+                    <a style="color: #292D32; text-decoration: none;" class="aHover" href="/product-views/a">
+                        <h6>View All</h6>
+                    </a>
+                </div>
+                <div class="row mt-3">
+                    @for (item of getDisplayedItems(); track item.id) {
+                    <div class="col-md-3">
+                        <div class="card mb-2 w-100 p-2" style="border-radius: 20px !important;">
+                            <div class="m-2 card border-0">
+                                <img class="position-relative" style="height: 25vh; border-radius: 2vh;" *ngIf="item.photo && item.photo.length > 0" [src]="item.photo[0].src">
+                                <!-- <img class="position-relative" style="height: 25vh; border-radius: 2vh;" *ngIf="item.photo && item.video.length > 0" [src]="item.video[0].src"> -->
+                                <div class="position-absolute bg-warning p-1"
+                                    style="border-radius: 5px; top: 10px; left: 5px;">
+                                    <!-- <span class="m-0 p-2">Special Offer</span> -->
+                                </div>
+                                <div class="position-absolute" style="top: 10px; right: 5px;">
+                                    <img *ngIf="item.wishlist.length<=0"  src="assets/images/fav.png" alt="" (click)="addWishLst(item)">
+                                    <img *ngIf="item.wishlist.length>0" src="assets/images/fav-added.png" alt="" (click)="removeWishLst(item)" >
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <b style="text-align: left;">{{item.price}}</b>
+                                    <div style="background-color: #FFD33C; border-radius: 5px;">
+                                        <span class="p-1">01: 23s remaining</span>
+                                    </div>
+                                </div>
+                                <span class="ellipsis" style="text-align: left; font-size: 15px;">{{item.title}}</span>
+                                <div class="p-2 d-flex" style="font-size: 12px;">
+                                    <div class="d-flex align-items-center" style="margin-right: auto;">
+                                        <img src="assets/images/date.svg"  alt=""><span
+                                            style="margin-left: 5px;">{{item.year}}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center" style="margin-right: auto;">
+                                        <img src="assets/images/km.svg"  alt=""><span
+                                            style="margin-left: 5px;">{{item.km}}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center" style="margin-right: auto;">
+                                        <img src="assets/images/petrol.svg"  alt=""><span
+                                            style="margin-left: 5px;">{{item.petrol}}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex">
+                                            <img src="assets/images/location.svg" style="width: 8%" alt=""><span
+                                                style="font-size: 1.7vh; margin-left: 5px;">{{item.location}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/auctionProduct/{{item.id}}" type="submit" class="bidButton p-2 mt-3">Bid Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-5">
+        <h1 class="sm-cat-text4">Feature Product</h1>
+        <span class="sm-cat-text3">Act fast! These featured products won't last long</span>
+        <div class="row">
+            <div class="col-11 mx-auto">
+                <div class="" style="text-align: right; cursor:pointer">
+                    <a style="color: #292D32; text-decoration: none;" class="aHover" href="/productView/f">
+                        <h6>View All</h6>
+                    </a>
+                </div>
+                <div class="row mt-3">
+                    @for (item of getDisplayedFeatured(); track item.id) {
+                    <div class="col-md-3">
+                        <a style="text-decoration: none; color: #1E293B;" href="/productDetails/{{item.id}}">
+                            <div class="card mb-2 p-2 w-100" style="border-radius: 20px !important;">
+                                <div class="m-2 card border-0">
+                                    <img class="position-relative" style="height: 25vh; border-radius: 2vh;" *ngIf="item.photo && item.photo.length > 0" [src]="item.photo[0].src">
+                                    <!-- <img class="position-relative" style="height: 25vh; border-radius: 2vh;" *ngIf="item.photo && item.video.length > 0" [src]="item.video[0].src"> -->
+                                    <div class="position-absolute bg-warning p-1"
+                                        style="border-radius: 5px; top: 10px; left: 5px;">
+                                        <!-- <span class="m-0 p-2">Special Offer</span> -->
+                                    </div>
+                                    <div class="position-absolute" style="top: 10px; right: 5px;">
+                                        <img *ngIf="item.wishlist.length<=0" src="assets/images/fav.png" alt="" (click)="addWishLst(item)">
+                                        <img *ngIf="item.wishlist.length>0" src="assets/images/fav-added.png" alt="" (click)="removeWishLst(item)" >
+                                    </div>
+                                    <b style="text-align: left; margin-top: 5px;">{{item.price}}</b>
+                                    <span class="ellipsis"
+                                        style="text-align: left; font-size: 15px;">{{item.title}}</span>
+                                    <div class="p-2 d-flex" style="font-size: 12px;">
+                                        <div class="d-flex align-items-center" style="margin-right: auto;">
+                                            <img src="assets/images/date.svg"  alt=""><span
+                                                style="margin-left: 5px;">{{item.year}}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center" style="margin-right: auto;">
+                                            <img src="assets/images/km.svg" alt=""><span
+                                                style="margin-left: 5px;">{{item.km}}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center" style="margin-right: auto;">
+                                            <img src="assets/images/petrol.svg"  alt=""><span
+                                                style="margin-left: 5px;">{{item.petrol}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex">
+                                                <img src="assets/images/location.svg" style="width: 8%" alt=""><span
+                                                    style="font-size: 1.7vh; margin-left: 5px;">{{item.location}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    }
+                </div>
+                <!-- <div class="row p-5">
+            </div>
+        </div>
+                    @for (item of featuredProducts; track item.id) {
+                        <div class="col-md-3 card">
+                            <div class="p-2 m-2 card">
+                                <img src="">
+                            </div>
+                            <h6>{{item.fix_price}}</h6>
+                            <button type="submit" class="bidButton p-2 m-2">Bid Know</button>
+                        </div>
+                }
+            </div> -->
+            </div>
+        </div>
+    </div>
+    <hr>
+    <app-footer></app-footer>
+</div>

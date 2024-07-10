@@ -1,0 +1,19 @@
+.star-rating {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .star {
+    font-size: 2rem;
+    color: #d3d3d3; /* default color for empty stars */
+    cursor: pointer;
+  }
+  
+  .star.filled {
+    color: #ffc107; /* filled star color */
+  }
+  
+  .star.disabled {
+    color: #d3d3d3; /* gray color when rating is 0 */
+  }
+  
